@@ -1,12 +1,12 @@
 
 pipeline{
     agent{label 'nodejs_11'}
-    stages{
-        stage('scm'){
+    stages {
+        stage ('scm'){
             steps{
-                git 'https://github.com/saidams786/js-e2e-express-server.git'
-            }
-            stage('build'){
+                  git 'https://github.com/saidams786/js-e2e-express-server.git'
+           }
+            stage ('build'){
                 steps{
                      sh '''npm install
                            npm run build
@@ -14,7 +14,7 @@ pipeline{
                 }
             }
         }
-        post{
+        post {
             success{
                 junit '**/TEST-.xml'
             }
